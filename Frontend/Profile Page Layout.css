@@ -1,37 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+}
+
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-    background-image: url(Disaster\ Image.jpg);
 }
 
-.profile-box {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+.sidebar{
+    width: 250px;
+    background-color: lightblue;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.profile-pic {
-    width: 100%;
+.sidebar .logo-section {
+    display: flex;
+    align-items: center;
 }
 
-.profile-info {
-    padding: 20px;
+.sidebar .logo {
+    width: 60px;
+    height: 60px;
+    background-color: lightskyblue;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
-.profile-info p {
+.sidebar .logo-name {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.sidebar .profile-pic{
+    width: 75px;
+    height: 75px;
+    background-color: lightskyblue;
+    border-radius: 50%;
     margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.sidebar .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar nav {
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.sidebar nav a:hover {
+    background-color: #aaa;
+}
+
+.sidebar .logout{
+    margin-top: auto;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+}
+
+.topbar{
+    background-color: #b0b0b0; 
+    height: 50px;
+    width: calc(100% - 250px);
+    position: fixed;
+    top: 0; 
+    left: 250px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.topbar .topbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.topbar .location-map {
+    color: #fff; 
     font-size: 16px;
 }
 
-.profile-info strong {
-    color: #333;
+.notification-icon {
+    display: flex;
+
 }
 
-.profile-info span {
-    color: #555;
+.bell-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url(bell.png);
+    background-size: cover;
+    display: inline-block;
+    border-radius: 50%;
+    order: 2;
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url(burger-bar.png);
+    background-size: cover;
+    display: inline-block;
+    border-radius: 50%;
+    order: 1;
+    margin-right: 1540px;
+}
+
+.header {
+    padding: 70px 20px 20px; 
 }
