@@ -1,0 +1,32 @@
+CREATE DATABASE IF NOT EXISTS SAFEHOUSEPUP;
+CREATE SCHEMA IF NOT EXISTS SAFEHOUSEPUP;
+USE SAFEHOUSEPUP;
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) UNIQUE,
+    Password VARCHAR(255)
+);
+
+CREATE TABLE Safe_Houses (
+    SafeHouseID INT PRIMARY KEY AUTO_INCREMENT,
+    SafeHouseName VARCHAR(50),
+    Location VARCHAR(250)
+);
+
+CREATE TABLE Rooms (
+    RoomID INT PRIMARY KEY AUTO_INCREMENT,
+    RoomName VARCHAR(50),
+    SafeHouseID INT,
+    FOREIGN KEY (SafeHouseID) REFERENCES Safe_Houses(SafeHouseID)
+);
+
+CREATE TABLE AssignedSafehouseandRooms (
+    UserID INT,
+    RoomID INT,
+    SafeHouseID INT,
+    PRIMARY KEY (UserID, RoomID, SafeHouseID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID),
+    FOREIGN KEY (SafeHouseID) REFERENCES Safe_Houses(SafeHouseID)
+);
