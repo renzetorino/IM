@@ -2,6 +2,29 @@
 .frame-6 * {
   box-sizing: border-box;
 }
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+}
+.search-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.search-input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  flex-grow: 1;
+}
+.search-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
 .frame-6 {
   background: #ffffff;
   display: flex;
