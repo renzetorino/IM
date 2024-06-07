@@ -6,8 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $Lastname = $_POST["Lastname"];
     $Address = $_POST["Address"];
     $Email = $_POST["Email"];
-    $Password = $_POST["Password"];
-
+    $Password = password_hash($_POST["Password"], PASSWORD_DEFAULT);
     try{
         require_once "database.php";
 
