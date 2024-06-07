@@ -11,14 +11,14 @@
 <body>
 
         <div class="wrapper">
-            <form action="">
+            <form action="LOGIN.php" method="POST">
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name ="Username" placeholder="Username" required>
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="Password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 
@@ -26,6 +26,14 @@
                     <label><input type="checkbox"> Remember me</label>
                     <a href="#">Forgot password?</a>
                 </div>
+                
+                <?php
+                session_start();
+                if (isset($_SESSION['error'])) {
+                    echo "<div class='error-message'>" . $_SESSION['error'] . "</div>";
+                    unset($_SESSION['error']);
+                }
+            ?>
 
                 <button type="submit" class="btn">Login</button>
                 
