@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $pdo = null;
         $stmt = null;
 
-        header("Location: Sign-Up-Page.php");
+        header("Location: Log-In.php");
 
         die();
     } catch (PDOException $e){
