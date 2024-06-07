@@ -115,3 +115,10 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-block-end: 20px; /* Adjust as needed */
+    text-align: left; /* Center the error message horizontally */
+}
