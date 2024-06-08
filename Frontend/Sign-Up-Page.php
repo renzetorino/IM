@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Form in HTML and CSS | Codehal</title>
-    <link rel="stylesheet" href="Sign Up Page Layout.css">
+    <link rel="stylesheet" href="CSS/Sign-Up-Page-Layout.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -40,7 +40,7 @@
             <button type="submit" class="btn">Sign Up</button>
             
             <div class="register-link">
-                <p>Already have an account? <a href="#">Login</a></p>
+                <p>Already have an account? <a href="Log-In.php">Login</a></p>
             </div>
         </form>
     </div>
