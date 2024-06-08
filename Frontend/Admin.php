@@ -17,12 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            
             $_SESSION['staffID'] = $user['STAFFID'];
             $_SESSION['username'] = $Username;
 
-            
-            header("Location: Profile-Page.php");
+
+            header("Location: admin-panel.php");
             exit();
         } else {
             
