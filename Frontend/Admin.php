@@ -8,21 +8,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once "database.php"; 
 
-        
-        $query = "SELECT STAFFID FROM baranggay_staff WHERE Username = ? AND Password = ?";
+      
+        $query = "SELECT STAFFID, Firstname, Password FROM baranggay_staff WHERE Username = ?";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$Username, $Password]);
+        $stmt->execute([$Username]);
 
         
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            
+            if ($Password === $user['Password']) { 
+               
+                $_SESSION['staffID'] = $user['STAFFID'];
+                $_SESSION['username'] = $Username;
+                $_SESSION['firstname'] = $user['Firstname']; 
 
-            $_SESSION['staffID'] = $user['STAFFID'];
-            $_SESSION['username'] = $Username;
-
-
-            header("Location: admin-panel.php");
-            exit();
+                header("Location: admin-panel.php");
+                exit();
+            } else {
+                
+                $_SESSION['error'] = "Invalid username or password.";
+                header("Location: ADMIN-Log-In.php");
+                exit();
+            }
         } else {
             
             $_SESSION['error'] = "Invalid username or password.";
@@ -30,7 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } catch (PDOException $e) {
-        die("Query Failed: " . $e->getMessage());
+        
+        $_SESSION['error'] = "An error occurred. Please try again later.";
+        header("Location: ADMIN-Log-In.php");
+        exit();
     } finally {
         
         if (isset($stmt)) {
@@ -41,9 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 } else {
+   
     header("Location: ADMIN-Log-In.php");
     exit();
 }
 ?>
+
 
 
