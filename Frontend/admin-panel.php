@@ -59,11 +59,14 @@ if (!isset($_SESSION['firstname'])) {
     </div>
 
     <div class="Panels">
-        <form method="post">
+        <form method="post" action ="admin-panel.php" style="display: inline-block;">
             <button name="Button2">USER INFO</button>
-            <button name="Button3">SAFEHOUSEs</button>
-            <button name="Button4">ASSIGN</button>
         </form>
+        <form method="post" action="admin-panel-safehouses.php" style="display: inline-block;">
+            <button name="Button3">SAFEHOUSES</button>
+        </form>
+            <button name="Button4">ASSIGN</button>
+       
     </div>
 
     <?php
