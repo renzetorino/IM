@@ -32,7 +32,7 @@ include 'fetch_data.php';
                 <div class="profile-picture-frame">
                     <div class="ellipse-2"></div>
                     <img class="profile-vector" src="css/Vector0.png" alt="Profile Picture" />
-                    <img class="add" src="css/Component1.png" alt="Add Component" />
+                    <img class="add" src="css/Component 1.png" alt="Add Component" />
                 </div>
                 <div class="text-18"><?php echo $_SESSION['username']; ?></div>
             </div>
