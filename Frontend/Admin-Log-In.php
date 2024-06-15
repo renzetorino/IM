@@ -31,7 +31,12 @@
             ?>
 
                 <button type="submit" class="btn">Login</button>
+                
+            <div class="register-link">
+                <p><a href="Log-In.php">Login as User</a></p>
+            </div>
         </div>
+     
     
 </body>
 </html>

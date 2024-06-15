@@ -1,37 +1,51 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Log-In.php");
+    exit();
+}
+include 'database.php'; 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: Log-In.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard in HTML and CSS | Codehal</title>
-    <link rel="stylesheet" href="User_dash.css">
-    <link rel="stylesheet" href="">
-
+    <title>User Dashboard | Codehal</title>
+    <link rel="stylesheet" href="CSS/User_dash.css">
 </head>
 <body>
 <div class="tab">
     <div class="sidebar">
-            <div class="logo-tab">
-                <div class="logo"></div>
-                <div class="logo-name">Logo Name</div>
+        <div class="logo-tab">
+            <div class="logo"></div>
+            <div class="logo-name">Logo Name</div>
+        </div>
+        <div class="profile-frame">
+            <div class="profile-picture-frame">
+                <div class="ellipse-2"></div>
+                <img class="profile-vector" src="images/Vector0.png" alt="Profile Picture" />
+                <img class="add" src="images/Component1.png" alt="Add Component" />
             </div>
-            <div class="profile-frame">
-                <div class="profile-picture-frame">
-                    <div class="ellipse-2"></div>
-                    <img class="profile-vector" src="C:\2nd year\second sem\IM\IM\Frontend\CSS\Vector0.png" alt="Vector0" />
-                    <img class="add" src="C:\2nd year\second sem\IM\IM\Frontend\CSS\Component 1.png" alt="Component 1" />
-                </div>
-                <div class="text-18">User</div>
-            </div>
+            <div class="text-18"><?php echo $_SESSION['username']; ?></div>
+        </div>
     </div>
     <div class="main">
         <div class="header">
             <div class="group-2">
-                <button name="Logout" class="next">LOG OUT</button></div>
-            <img class="vector2" src="C:\2nd year\second sem\IM\IM\Frontend\CSS\Vector1.png" alt="Vector1" />
+                <form method="POST">
+                    <button type="submit" name="logout" class="next">LOG OUT</button>
+                </form>
+            </div>
+            <img class="vector2" src="images/Vector1.png" alt="Header Image" />
         </div>
-        
         <div class="frame-14">
             <div class="text-24">Dashboard</div>
         </div>
@@ -64,11 +78,10 @@
                                 </div>
                             </div>
                         </div>
-                            <button class="text-16" onclick="on()">Register</button>
+                        <button class="text-16" onclick="on()">Register</button>
                     </div>
                 </div>
-                <script src="User_Dash.js"></script>
-                
+                <script src="js/User_Dash.js"></script>
             </div>
         </div> 
     </div>
