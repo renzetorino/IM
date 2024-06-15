@@ -1,4 +1,4 @@
-/* General styles */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -15,7 +15,7 @@ menu, ol, ul {
     padding: 0;
 }
 
-/* Admin Panel styles */
+
 .tab {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -153,7 +153,6 @@ menu, ol, ul {
     text-align: center;
 }
 
-/* Logout Button */
 .next {
     font-size: 14px;
     background-color: #FBAA91;
@@ -199,7 +198,7 @@ menu, ol, ul {
     align-items: flex-start;
     flex: 1 0 0;
 }
-/* box */
+
 .sh-box {
     background: #ffffff;
     border-radius: 5px;
@@ -243,6 +242,14 @@ menu, ol, ul {
     justify-content: center;
     align-self: flex-end;
 }
+.register:hover {
+    background: #ff704d;
+}
+
+.register:active {
+    background: #fbaa91;
+    transform: scale(0.95);
+}
   
 .text-16 {
     color: #fff;
@@ -282,15 +289,18 @@ menu, ol, ul {
     width: 100%;
     height: 30px;
 }
-/* overlay */
-#overlay {
+
+
+.overlay {
     position: fixed;
     display: none;
     padding: 32px;
-    width: 30%;
-    height: 30%;
+    width: 50%; 
+    max-width: 600px; 
+    height: auto; 
+    max-height: 80%; 
     top: 50%;
-    left: 58%;
+    left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -298,8 +308,11 @@ menu, ol, ul {
     border-color: #cccccc;
     border-width: 2px;
     z-index: 2;
+    overflow-y: auto; 
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
+
 .register-detail{
     display: flex;
     flex-direction: column;
@@ -307,5 +320,9 @@ menu, ol, ul {
     align-items: flex-start;
     gap: 10px;
     align-self: stretch;
-}  
+}
 
+.selected-room {
+    border: 2px solid #fbaa91;
+    background-color: #fce4e1;
+}

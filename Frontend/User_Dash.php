@@ -20,7 +20,6 @@ include 'fetch_data.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard | Codehal</title>
     <link rel="stylesheet" href="CSS/User_dash.css">
-  
 </head>
 <body>
     <div class="tab">
@@ -32,8 +31,8 @@ include 'fetch_data.php';
             <div class="profile-frame">
                 <div class="profile-picture-frame">
                     <div class="ellipse-2"></div>
-                    <img class="profile-vector" src="images/Vector0.png" alt="Profile Picture" />
-                    <img class="add" src="images/Component1.png" alt="Add Component" />
+                    <img class="profile-vector" src="css/Vector0.png" alt="Profile Picture" />
+                    <img class="add" src="css/Component1.png" alt="Add Component" />
                 </div>
                 <div class="text-18"><?php echo $_SESSION['username']; ?></div>
             </div>
@@ -45,7 +44,7 @@ include 'fetch_data.php';
                         <button type="submit" name="logout" class="next">LOG OUT</button>
                     </form>
                 </div>
-                <img class="vector2" src="images/Vector1.png" alt="Header Image" />
+                <img class="vector2" src="css/Vector1.png" alt="Header Image" />
             </div>
             <div class="frame-14">
                 <div class="text-24">Dashboard</div>
@@ -71,7 +70,7 @@ include 'fetch_data.php';
                             <div class="register">
                                 <button class="text-16" onclick="on('<?php echo $safeHouse['SafeHouseName']; ?>')">Register</button>
                             </div>
-                            <div id="overlay-<?php echo $safeHouse['SafeHouseName']; ?>" class="overlay" style="display:none;" onclick="off('<?php echo $safeHouse['SafeHouseName']; ?>')">
+                            <div id="overlay-<?php echo $safeHouse['SafeHouseName']; ?>" class="overlay" onclick="off('<?php echo $safeHouse['SafeHouseName']; ?>')">
                                 <div class="sh-detail" onclick="event.stopPropagation()">
                                     <div class="text-18">Safehouse: <?php echo $safeHouse['SafeHouseName']; ?></div>
                                     <div class="text-18">Rooms</div>
@@ -85,24 +84,22 @@ include 'fetch_data.php';
                                     </select>
                                     <div id="roomList-<?php echo $safeHouse['SafeHouseName']; ?>">
                                         <?php foreach ($safeHouse['rooms'] as $room): ?>
-                                            <div class="input-box room" data-room-type="<?php echo $room['ROOMTYPE_NAME']; ?>">
+                                            <div class="input-box room" id="<?php echo $room['RoomID']; ?>" data-room-type="<?php echo $room['ROOMTYPE_NAME']; ?>" data-safehouse="<?php echo $safeHouse['SafeHouseName']; ?>">
                                                 <?php echo $room['RoomName'] . ' - ' . $room['ROOMTYPE_NAME']; ?>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
                                     <div class="register">
-                                        <button class="text-16">Register</button>
+                                        <button type="submit" class="text-16">Register</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <script src="User_Dash.js" defer></script>
                 </div>
             </div> 
         </div>
     </div>
+    <script src="User_Dash.js" defer></script>
 </body>
-</html>
-
 </html>
