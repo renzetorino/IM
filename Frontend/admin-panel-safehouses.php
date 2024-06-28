@@ -97,7 +97,9 @@ if (isset($_POST['Logout'])) {
         <form method="post" action="admin-panel-safehouses.php" style="display: inline-block;">
             <button name="Button3">SAFEHOUSES</button>
         </form>
+        <form method="post" action="admin-panel-assign.php" style="display: inline-block;">
             <button name="Button4">ASSIGN</button>
+        </form>
     </div>
 
     <div class="Tables">

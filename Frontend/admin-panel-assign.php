@@ -79,25 +79,22 @@ if (!isset($_SESSION['firstname'])) {
     ?>
 
 <div class="container my-5">
-        <h2>USER INFO</h2>
-        <!--<a class="btn btn-primary" href="create-safehouse.php" role="button">New SafeHouse</a>-->
+        <h2>Assigned Safe house and rooms</h2>
         <br>
         <table class="table">
             <thead>
                 <tr>
-                    <th>User ID</th>
+                    <th>AssignmentID</th>
                     <th>Username</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Created At</th>
+                    <th>RoomName</th>
+                    <th>Current_STATUS</th>
+                    <th>AssignedTIME</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                require_once "User-Admin-access.php"; 
+                require_once "Assign-access.php"; 
                 ?>
             </tbody>
         </table>
