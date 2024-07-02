@@ -1,15 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: Log-In.php");
-    exit();
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logout'])) {
-    session_destroy();
-    header("Location: Log-In.php");
-    exit();
-}
+include 'User-Dash-access.php';
 
 include 'fetch_data.php';
 ?>
@@ -53,7 +43,7 @@ include 'fetch_data.php';
                 <div class="frame-13">
                     <div class="text-18">List of Safehouses</div>
                     <?php foreach ($safeHouses as $safeHouse): ?>
-                        <div class="sh-box">
+                        <div class="sh-box" id="safehouse-<?php echo $safeHouse['SafeHouseName']; ?>">
                             <div class="sh-name">
                                 <div class="text-18"><?php echo $safeHouse['SafeHouseName']; ?></div>
                                 <div class="status">
@@ -68,30 +58,40 @@ include 'fetch_data.php';
                                 <div class="input-box"><?php echo $safeHouse['Location']; ?></div>
                             </div>
                             <div class="register">
-                                <button class="text-16" onclick="on('<?php echo $safeHouse['SafeHouseName']; ?>')">Register</button>
+                                <button class="text-16" onclick="showDetailFrame('<?php echo $safeHouse['SafeHouseName']; ?>')">Register</button>
                             </div>
-                            <div id="overlay-<?php echo $safeHouse['SafeHouseName']; ?>" class="overlay" onclick="off('<?php echo $safeHouse['SafeHouseName']; ?>')">
-                                <div class="sh-detail" onclick="event.stopPropagation()">
-                                    <div class="text-18">Safehouse: <?php echo $safeHouse['SafeHouseName']; ?></div>
-                                    <div class="text-18">Rooms</div>
-                                    <select id="roomType-<?php echo $safeHouse['SafeHouseName']; ?>" onchange="filterRooms('<?php echo $safeHouse['SafeHouseName']; ?>')">
-                                        <option value="all">All</option>
-                                        <?php 
-                                        $roomTypes = array_unique(array_column($safeHouse['rooms'], 'ROOMTYPE_NAME'));
-                                        foreach ($roomTypes as $roomType): ?>
-                                            <option value="<?php echo $roomType; ?>"><?php echo $roomType; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <div id="roomList-<?php echo $safeHouse['SafeHouseName']; ?>">
-                                        <?php foreach ($safeHouse['rooms'] as $room): ?>
-                                            <div class="input-box room" id="<?php echo $room['RoomID']; ?>" data-room-type="<?php echo $room['ROOMTYPE_NAME']; ?>" data-safehouse="<?php echo $safeHouse['SafeHouseName']; ?>">
-                                                <?php echo $room['RoomName'] . ' - ' . $room['ROOMTYPE_NAME']; ?>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                    <div class="register">
-                                        <button type="submit" class="text-16">Register</button>
-                                    </div>
+                        </div>
+                        <div id="detail-frame-<?php echo $safeHouse['SafeHouseName']; ?>" class="detail-frame">
+                            <div class="sh-detail">
+                                <div class="text-18">Safehouse: <?php echo $safeHouse['SafeHouseName']; ?></div>
+                                <div class="text-18">Rooms</div>
+                                <select id="roomType-<?php echo $safeHouse['SafeHouseName']; ?>" onchange="filterRooms('<?php echo $safeHouse['SafeHouseName']; ?>')">
+                                    <option value="all">All</option>
+                                    <?php 
+                                    $roomTypes = array_unique(array_column($safeHouse['rooms'], 'ROOMTYPE_NAME'));
+                                    foreach ($roomTypes as $roomType): ?>
+                                        <option value="<?php echo $roomType; ?>"><?php echo $roomType; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div id="roomList-<?php echo $safeHouse['SafeHouseName']; ?>" class="room-list">
+                                    <?php foreach ($safeHouse['rooms'] as $room): ?>
+                                        <button class="input-box room" 
+                                                id="<?php echo $room['RoomID']; ?>" 
+                                                data-room-type="<?php echo $room['ROOMTYPE_NAME']; ?>" 
+                                                data-safehouse="<?php echo $safeHouse['SafeHouseName']; ?>"
+                                                onclick="toggleRoomSelection(this)">
+                                            <?php echo $room['RoomName'] . ' - ' . $room['ROOMTYPE_NAME']; ?>
+                                        </button>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="register">
+                                    <form method="POST">
+                                        <input type="hidden" name="room_id" value="" id="selected-room-id-<?php echo $safeHouse['SafeHouseName']; ?>">
+                                        <button type="submit" name="register" class="text-16" onclick="setRoomID('<?php echo $safeHouse['SafeHouseName']; ?>')">Register</button>
+                                    </form>
+                                </div>
+                                <div class="register">
+                                    <button type="button" class="text-16" onclick="hideDetailFrame('<?php echo $safeHouse['SafeHouseName']; ?>')">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -103,3 +103,4 @@ include 'fetch_data.php';
     <script src="User_Dash.js" defer></script>
 </body>
 </html>
+                                
