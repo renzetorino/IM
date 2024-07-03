@@ -23,8 +23,8 @@ try {
                 <td>{$row['Current_STATUS']}</td>
                 <td>{$row['AssignedTIME']}</td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href='edit-user.php?id={$row['UserID']}'>EDIT</a>
-                    <a class='btn btn-danger btn-sm' href='delete-user.php?id={$row['UserID']}'>DELETE</a>
+                    <a class='btn btn-primary btn-sm' href='update-assign.php?id={$row['AssignmentID']}'>EDIT</a>
+                    <a class='btn btn-danger btn-sm' href='delete-user.php?id={$row['AssignmentID']}'>DELETE</a>
                 </td>
               </tr>";
     }
