@@ -39,9 +39,23 @@
             <div class="frame-12">
                 <div class="frame-13">
                     <?php if ($assignedRoom): ?>
-                        <div class="assigned-room">
-                            <div class="text-18">You are assigned to Room <?php echo $assignedRoom['RoomName']; ?> in Safehouse <?php echo $assignedRoom['SafeHouseName']; ?></div>
-                        </div>
+                        <table class="assigned-room">
+                        <caption class="text-18">You are assigned to Room <?php echo $assignedRoom['RoomName']; ?> in Safehouse <?php echo $assignedRoom['SafeHouseName']; ?></caption>
+                        <thead>
+                            <tr>
+                                <th>Safehouse Name</th>
+                                <th>Room Name</th>
+                                <th>Room ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $assignedRoom['SafeHouseName']; ?></td>
+                                <td><?php echo $assignedRoom['RoomID']; ?></td>
+                                <td><?php echo $assignedRoom['RoomName']; ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <?php else: ?>
                         <div class="text-18">List of Safehouses</div>
                         <?php foreach ($safeHouses as $safeHouse): ?>

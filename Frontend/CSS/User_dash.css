@@ -344,3 +344,22 @@ menu, ol, ul {
     border-color: #fbaa91;
     color: #fff;
 }
+table.assigned-room {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+table.assigned-room caption {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+table.assigned-room th, table.assigned-room td {
+    padding: 12px 15px;
+    border: 1px solid black;
+}
+table.assigned-room th {
+    background-color: #FBAA91;
+}
