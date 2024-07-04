@@ -23,63 +23,7 @@ if (isset($_POST['Logout'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN-PANEL</title>
-    <style>
-        body {
-            margin: 0px;
-        }
-        div.header {
-            font-family: poppins;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 60px;
-            background-color: lightblue;
-        }
-        div.header button {
-            background-color: beige;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 8px 12px;
-            border: 2px solid black;
-            border-radius: 5px;
-        }
-        div.Panels {
-            text-align: center;
-            margin-top: 20px; 
-            background-color: whitesmoke;
-            border: 2px solid black;
-        }
-        div.Panels button {
-            background-color: pink;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 12px 48px;
-            border: 2px solid black;
-            border-radius: 5px;
-            margin: 100px; 
-        }
-        form {
-            margin: 20px;
-        }
-        input, select {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: lightgrey;
-        }
-    </style>
+    <link rel="stylesheet" href="css/admin-safehouse-panel.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>

@@ -12,42 +12,7 @@ if (!isset($_SESSION['firstname'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN-PANEL</title>
-    <style>
-        body{
-            margin: 0px;
-        }
-        div.header{
-            font-family: poppins;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 60px;
-            background-color: lightblue;
-        }
-        div.header button{
-            background-color: beige;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 8px 12px;
-            border:2px solid black;
-            border-radius: 5px;
-        }
-        div.Panels {
-            text-align: center;
-            margin-top: 20px; /* Adjust margin as needed */
-            background-color: whitesmoke;
-            border: 2px solid black;
-        }
-        div.Panels button {
-            background-color: pink;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 12px 48px;
-            border: 2px solid black;
-            border-radius: 5px;
-            margin: 100px; 
-    }
-    </style>
+    <link rel="stylesheet" href="css/admin-panel-layout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
