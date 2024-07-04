@@ -12,8 +12,10 @@
     <div class="tab">
         <div class="sidebar">
             <div class="logo-tab">
-                <div class="logo"></div>
-                <div class="logo-name">Logo Name</div>
+                <div class="logo">
+                    <img src ="css/logo.png" alt = "Logo" class = "logo-img">
+                </div>
+                <div class="logo-name">Safe Disaster Center</div>
             </div>
             <div class="profile-frame">
                 <div class="profile-picture-frame">
