@@ -6,8 +6,6 @@ if (!isset($_SESSION['firstname'])) {
     exit();
 }
 
-include 'database.php'; 
-
 if (isset($_POST['Logout'])) {
     session_destroy();
     header("Location: Admin-Log-In.php");
@@ -15,7 +13,6 @@ if (isset($_POST['Logout'])) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,17 +69,8 @@ if (isset($_POST['Logout'])) {
                 <th>Status</th>
             </tr>
             <?php
-            include 'database.php';
-            $result = $pdo->query("SELECT * FROM Safe_Houses");
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>
-                        <td>{$row['SafeHouseID']}</td>
-                        <td>{$row['SafeHouseName']}</td>
-                        <td>{$row['Location']}</td>
-                        <td>{$row['ContactNumber']}</td>
-                        <td>" . ($row['Status'] ? 'Active' : 'Inactive') . "</td>
-                      </tr>";
-            }
+            $safehouses = true;
+            require "select-safehouse-rooms.php"
             ?>
         </table>
 
@@ -91,7 +79,7 @@ if (isset($_POST['Logout'])) {
             <input type="text" name="room_name" placeholder="Room Name" required>
             <input type="number" name="capacity" placeholder="Capacity" required>
             <label>
-                Safehouse:
+                
                 <select name="safehouse_id" required>
                     <?php
                     $result = $pdo->query("SELECT SafeHouseID, SafeHouseName FROM Safe_Houses");
@@ -125,28 +113,12 @@ if (isset($_POST['Logout'])) {
                 <th>Room Type</th>
             </tr>
             <?php
-            $result = $pdo->query("SELECT Rooms.*, Safe_Houses.SafeHouseName, ROOMTYPE.ROOMTYPE_NAME 
-                                   FROM Rooms 
-                                   JOIN Safe_Houses ON Rooms.SafeHouseID = Safe_Houses.SafeHouseID
-                                   JOIN ROOMTYPE ON Rooms.ROOMTYPE_ID = ROOMTYPE.ROOMTYPE_ID");
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>
-                        <td>{$row['RoomID']}</td>
-                        <td>{$row['RoomName']}</td>
-                        <td>{$row['CAPACITY']}</td>
-                        <td>{$row['SafeHouseName']}</td>
-                        <td>{$row['ROOMTYPE_NAME']}</td>
-                      </tr>";
-            }
+           $rooms = true;
+           $safehouses = false;
+           require "select-safehouse-rooms.php";
             ?>
         </table>
     </div>
 
-    <?php
-    if (isset($_POST['Logout'])) {
-        session_destroy();
-        header("location: Admin-Log-In.php");
-    }
-    ?>
 </body>
 </html>

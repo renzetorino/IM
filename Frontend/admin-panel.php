@@ -5,7 +5,13 @@ if (!isset($_SESSION['firstname'])) {
     header("Location: ADMIN-Log-In.php");
     exit();
 }
+
+    if(isset($_POST['Logout'])){
+        session_destroy();
+        header("location: Admin-Log-In.php");
+    }
 ?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,12 +42,7 @@ if (!isset($_SESSION['firstname'])) {
        
     </div>
 
-    <?php
-    if(isset($_POST['Logout'])){
-        session_destroy();
-        header("location: Admin-Log-In.php");
-    }
-    ?>
+   
 
 <div class="container my-5">
         <h2>USER INFO</h2>
