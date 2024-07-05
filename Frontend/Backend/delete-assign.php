@@ -16,6 +16,11 @@ try {
         // Bind the AssignmentID parameter
         $statement->bindParam(':AssignmentID', $AssignmentID, PDO::PARAM_INT);
 
+        if ($statement->execute()) {
+            $_SESSION['message'] = "Assigned data deleted succesfully.";
+        } else {
+            $_SESSION['message'] = "Failed to delete assigned data.";
+        }
     } else {
         $_SESSION['message'] = "Invalid request.";
     }
@@ -23,7 +28,7 @@ try {
     $_SESSION['message'] = "Error: " . $e->getMessage();
 }
 
-// Redirect to the admin panel
+// Redirect to the assigned user page
 header("Location: ../admin-panel-assign.php");
 exit();
 ?>

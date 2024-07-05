@@ -29,19 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 
                 $_SESSION['error'] = "Invalid username or password.";
-                header("Location: ADMIN-Log-In.php");
+                header("Location: ../Admin-Log-In.php");
                 exit();
             }
         } else {
             
             $_SESSION['error'] = "Invalid username or password.";
-            header("Location: ADMIN-Log-In.php");
+            header("Location: ../Admin-Log-In.php");
             exit();
         }
     } catch (PDOException $e) {
         
         $_SESSION['error'] = "An error occurred. Please try again later.";
-        header("Location: ADMIN-Log-In.php");
+        header("Location: ../Admin-Log-In.php");
         exit();
     } finally {
         
