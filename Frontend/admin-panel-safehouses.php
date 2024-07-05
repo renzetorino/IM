@@ -6,8 +6,6 @@ if (!isset($_SESSION['firstname'])) {
     exit();
 }
 
-include 'database.php'; 
-
 if (isset($_POST['Logout'])) {
     session_destroy();
     header("Location: Admin-Log-In.php");
@@ -16,70 +14,13 @@ if (isset($_POST['Logout'])) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN-PANEL</title>
-    <style>
-        body {
-            margin: 0px;
-        }
-        div.header {
-            font-family: poppins;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 60px;
-            background-color: lightblue;
-        }
-        div.header button {
-            background-color: beige;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 8px 12px;
-            border: 2px solid black;
-            border-radius: 5px;
-        }
-        div.Panels {
-            text-align: center;
-            margin-top: 20px; 
-            background-color: whitesmoke;
-            border: 2px solid black;
-        }
-        div.Panels button {
-            background-color: pink;
-            font-size: 16px;
-            font-weight: 550;
-            padding: 12px 48px;
-            border: 2px solid black;
-            border-radius: 5px;
-            margin: 100px; 
-        }
-        form {
-            margin: 20px;
-        }
-        input, select {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: lightgrey;
-        }
-    </style>
+    <link rel="stylesheet" href="css/admin-safehouse-panel.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -104,7 +45,7 @@ if (isset($_POST['Logout'])) {
 
     <div class="Tables">
         <h2>Add Safehouse</h2>
-        <form method="post" action="Safehouse-Admin-access.php">
+        <form method="post" action="backend/Safehouse-Admin-access.php">
             <input type="text" name="safehouse_name" placeholder="Safehouse Name" required>
             <input type="text" name="location" placeholder="Location" required>
             <input type="text" name="contact_number" placeholder="Contact Number" required>
@@ -128,26 +69,17 @@ if (isset($_POST['Logout'])) {
                 <th>Status</th>
             </tr>
             <?php
-            include 'database.php';
-            $result = $pdo->query("SELECT * FROM Safe_Houses");
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>
-                        <td>{$row['SafeHouseID']}</td>
-                        <td>{$row['SafeHouseName']}</td>
-                        <td>{$row['Location']}</td>
-                        <td>{$row['ContactNumber']}</td>
-                        <td>" . ($row['Status'] ? 'Active' : 'Inactive') . "</td>
-                      </tr>";
-            }
+            $safehouses = true;
+            require "backend/select-safehouse-rooms.php"
             ?>
         </table>
 
         <h2>Add Room</h2>
-        <form method="post" action="Room-Admin-access.php">
+        <form method="post" action="backend/Room-Admin-access.php">
             <input type="text" name="room_name" placeholder="Room Name" required>
             <input type="number" name="capacity" placeholder="Capacity" required>
             <label>
-                Safehouse:
+                
                 <select name="safehouse_id" required>
                     <?php
                     $result = $pdo->query("SELECT SafeHouseID, SafeHouseName FROM Safe_Houses");
@@ -181,28 +113,12 @@ if (isset($_POST['Logout'])) {
                 <th>Room Type</th>
             </tr>
             <?php
-            $result = $pdo->query("SELECT Rooms.*, Safe_Houses.SafeHouseName, ROOMTYPE.ROOMTYPE_NAME 
-                                   FROM Rooms 
-                                   JOIN Safe_Houses ON Rooms.SafeHouseID = Safe_Houses.SafeHouseID
-                                   JOIN ROOMTYPE ON Rooms.ROOMTYPE_ID = ROOMTYPE.ROOMTYPE_ID");
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>
-                        <td>{$row['RoomID']}</td>
-                        <td>{$row['RoomName']}</td>
-                        <td>{$row['CAPACITY']}</td>
-                        <td>{$row['SafeHouseName']}</td>
-                        <td>{$row['ROOMTYPE_NAME']}</td>
-                      </tr>";
-            }
+           $rooms = true;
+           $safehouses = false;
+           require "backend/select-safehouse-rooms.php";
             ?>
         </table>
     </div>
 
-    <?php
-    if (isset($_POST['Logout'])) {
-        session_destroy();
-        header("location: Admin-Log-In.php");
-    }
-    ?>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<?php include 'User-Dash-access.php'; ?>
-<?php include 'fetch_data.php'; ?>
+<?php include 'backend/User-Dash-access.php'; ?>
+<?php include 'backend/fetch_data.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +12,10 @@
     <div class="tab">
         <div class="sidebar">
             <div class="logo-tab">
-                <div class="logo"></div>
-                <div class="logo-name">Logo Name</div>
+                <div class="logo">
+                    <img src ="css/logo.png" alt = "Logo" class = "logo-img">
+                </div>
+                <div class="logo-name">Safe Disaster Center</div>
             </div>
             <div class="profile-frame">
                 <div class="profile-picture-frame">
@@ -117,6 +119,6 @@
             </div> 
         </div>
     </div>
-    <script src="User_Dash.js" defer></script>
+    <script src="backend/User_Dash.js" defer></script>
 </body>
 </html>

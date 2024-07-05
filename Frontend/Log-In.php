@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="LOGIN.php" method="POST">
+        <form action="backend/LOGIN.php" method="POST">
             <h1>Login</h1>
             <div class="input-box">
                 <input type="text" name="Username" placeholder="Username" required>

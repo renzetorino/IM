@@ -11,7 +11,7 @@
 <body>
 
     <div class="wrapper">
-        <form action="SIGNUP.php" method="post">
+        <form action="backend/SIGNUP.php" method="post">
             <h1>Sign Up</h1>
             <div class="input-box">
                 <input type="text" name="Username" placeholder="Username" required>

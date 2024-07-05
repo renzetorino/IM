@@ -1,6 +1,6 @@
 function showDetailFrame(safeHouseName) {
     const detailFrame = document.getElementById('detail-frame-' + safeHouseName);
-    detailFrame.style.display = 'flex'; // Use 'flex' if it's a flexbox layout
+    detailFrame.style.display = 'flex'; 
 }
 
 function hideDetailFrame(safeHouseName) {
@@ -14,7 +14,7 @@ function setRoomID(safeHouseName) {
 
     if (selectedRoom) {
         document.getElementById('selected-room-id-' + safeHouseName).value = selectedRoom.id;
-        hideDetailFrame(safeHouseName); // Hide detail frame after selection
+        hideDetailFrame(safeHouseName); 
     } else {
         alert("No room selected.");
     }

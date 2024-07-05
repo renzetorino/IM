@@ -20,16 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($Password, $hashed_password)) {
                 $_SESSION['user_id'] = $user['UserID'];
                 $_SESSION['username'] = $Username;
-                header("Location: User_Dash.php");
+                header("Location: ../User_Dash.php");
                 exit();
             } else {
                 $_SESSION['error'] = "Invalid password.";
-                header("Location: Log-In.php");
+                header("Location:  ../Log-In.php");
                 exit();
             }
         } else {
             $_SESSION['error'] = "No user found with that username.";
-            header("Location: Log-In.php");
+            header("Location: ../Log-In.php");
             exit();
         }
 
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Query Failed: " . $e->getMessage());
     }
 } else {
-    header("Location: Log-In.php"); 
+    header("Location: ../Log-In.php"); 
     exit();
 }
 ?>

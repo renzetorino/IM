@@ -15,7 +15,7 @@ if (isset($_POST['add_safehouse'])) {
     $stmt->bindParam(4, $status);
 
     if ($stmt->execute()) {
-        header("Location: admin-panel-safehouses.php");
+        header("Location: ../admin-panel-safehouses.php");
     } else {
         echo "Error: " . $stmt->errorInfo()[2];
     }
