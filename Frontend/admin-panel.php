@@ -46,7 +46,6 @@ if (!isset($_SESSION['firstname'])) {
 
 <div class="container my-5">
         <h2>USER INFO</h2>
-        <!--<a class="btn btn-primary" href="create-safehouse.php" role="button">New SafeHouse</a>-->
         <br>
         <table class="table">
             <thead>
@@ -58,12 +57,11 @@ if (!isset($_SESSION['firstname'])) {
                     <th>Address</th>
                     <th>Email</th>
                     <th>Created At</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                require_once "User-Admin-access.php"; 
+                require_once "backend/User-Admin-access.php"; 
                 ?>
             </tbody>
         </table>

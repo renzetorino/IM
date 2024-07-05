@@ -45,7 +45,7 @@ if (isset($_POST['Logout'])) {
 
     <div class="Tables">
         <h2>Add Safehouse</h2>
-        <form method="post" action="Safehouse-Admin-access.php">
+        <form method="post" action="backend/Safehouse-Admin-access.php">
             <input type="text" name="safehouse_name" placeholder="Safehouse Name" required>
             <input type="text" name="location" placeholder="Location" required>
             <input type="text" name="contact_number" placeholder="Contact Number" required>
@@ -70,12 +70,12 @@ if (isset($_POST['Logout'])) {
             </tr>
             <?php
             $safehouses = true;
-            require "select-safehouse-rooms.php"
+            require "backend/select-safehouse-rooms.php"
             ?>
         </table>
 
         <h2>Add Room</h2>
-        <form method="post" action="Room-Admin-access.php">
+        <form method="post" action="backend/Room-Admin-access.php">
             <input type="text" name="room_name" placeholder="Room Name" required>
             <input type="number" name="capacity" placeholder="Capacity" required>
             <label>
@@ -115,7 +115,7 @@ if (isset($_POST['Logout'])) {
             <?php
            $rooms = true;
            $safehouses = false;
-           require "select-safehouse-rooms.php";
+           require "backend/select-safehouse-rooms.php";
             ?>
         </table>
     </div>

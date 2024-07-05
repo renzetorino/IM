@@ -54,7 +54,7 @@ if (!isset($_SESSION['firstname'])) {
         <h2>Assigned Safe house and rooms</h2>
 
                 <?php
-                require_once "Assign-access.php"; 
+                require_once "backend/Assign-access.php"; 
                 ?>
     </div>
 </body>

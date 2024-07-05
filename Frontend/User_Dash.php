@@ -1,5 +1,5 @@
-<?php include 'User-Dash-access.php'; ?>
-<?php include 'fetch_data.php'; ?>
+<?php include 'backend/User-Dash-access.php'; ?>
+<?php include 'backend/fetch_data.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,6 +119,6 @@
             </div> 
         </div>
     </div>
-    <script src="User_Dash.js" defer></script>
+    <script src="backend/User_Dash.js" defer></script>
 </body>
 </html>

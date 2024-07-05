@@ -15,7 +15,7 @@ if (isset($_POST['add_room'])) {
     $stmt->bindParam(4, $room_type_id);
 
     if ($stmt->execute()) {
-        header("Location: admin-panel-safehouses.php");
+        header("Location: ../admin-panel-safehouses.php");
     } else {
         echo "Error: " . $stmt->errorInfo()[2];
     }

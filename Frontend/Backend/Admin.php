@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $Username;
                 $_SESSION['firstname'] = $user['Firstname']; 
 
-                header("Location: admin-panel.php");
+                header("Location:../admin-panel.php");
                 exit();
             } else {
                 

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
     exit();
 } else {
     // Handle any validation or error messages if needed
-    // Optionally redirect or display an error message
+   
     header("Location: user_dashboard.php"); // Redirect to dashboard if not submitted properly
     exit();
 }

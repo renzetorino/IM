@@ -22,8 +22,8 @@ try {
                 <td>{$row['Email']}</td>
                 <td>{$row['created_at']}</td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href='edit-user.php?id={$row['UserID']}'>EDIT</a>
-                    <a class='btn btn-danger btn-sm' href='delete-user.php?id={$row['UserID']}'>DELETE</a>
+                    
+                    <a class='btn btn-danger btn-sm' href='backend/delete-user.php?id={$row['UserID']}'>DELETE</a>
                 </td>
               </tr>";
     }

@@ -6,7 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
 try {
     require_once "database.php"; 
 
-    // Handle search query if set
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $query = "SELECT *, USER_INFO.Username, Rooms.RoomName
                 FROM assignedsafehouseandrooms
@@ -42,8 +41,8 @@ try {
                 <td>{$row['Current_STATUS']}</td>
                 <td>{$row['AssignedTIME']}</td>
                 <td>
-                    <a class='btn btn-primary btn-sm' href='edit-user.php?id={$row['UserID']}'>EDIT</a>
-                    <a class='btn btn-danger btn-sm' href='delete-user.php?id={$row['UserID']}'>DELETE</a>
+                    
+                    <a class='btn btn-danger btn-sm' href='backend/delete-assign.php?id={$row['AssignmentID']}'>DELETE</a>
                 </td>
               </tr>";
     }

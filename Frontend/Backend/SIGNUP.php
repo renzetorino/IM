@@ -20,12 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $pdo = null;
         $stmt = null;
 
-        header("Location: Log-In.php");
+        header("Location: ../Log-In.php");
 
         die();
     } catch (PDOException $e){
         die("Query Failed: " . $e->getMessage());
     }
 }else{
-    header("Location: Sign-Up-Page.php");
+    header("Location: ../Sign-Up-Page.php");
 }
+
+header("Location: ../admin-panel-assign.php");
