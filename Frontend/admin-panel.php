@@ -57,6 +57,7 @@ if (!isset($_SESSION['firstname'])) {
                     <th>Address</th>
                     <th>Email</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>

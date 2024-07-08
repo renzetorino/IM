@@ -14,8 +14,33 @@ try {
                     <td>{$row['SafeHouseName']}</td>
                     <td>{$row['Location']}</td>
                     <td>{$row['ContactNumber']}</td>
-                    <td>" . ($row['Status'] ? 'Active' : 'Inactive') . "</td>
+                    <td>
+                    <form method='POST' action=''>
+                        <input type='hidden' name='SafeHouseID' value='{$row['SafeHouseID']}'>
+                        <select name='Status'>
+                            <option value='1' " . ($row['Status'] ? 'selected' : '') . ">Active</option>
+                            <option value='0' " . (!$row['Status'] ? 'selected' : '') . ">Inactive</option>
+                        </select>
+                        <button type='submit' name='updateStatus'>Update</button>
+                    </form>
+                </td>
                 </tr>";
+        }
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateStatus'])) {
+        $safeHouseID = $_POST['SafeHouseID'];
+        $status = $_POST['Status'];
+
+        $updateQuery = "UPDATE Safe_Houses SET Status = :Status WHERE SafeHouseID = :SafeHouseID";
+        $updateStmt = $pdo->prepare($updateQuery);
+        $updateStmt->bindParam(':Status', $status, PDO::PARAM_INT);
+        $updateStmt->bindParam(':SafeHouseID', $safeHouseID, PDO::PARAM_INT);
+
+        if ($updateStmt->execute()) {
+            echo "Status updated successfully.";
+        } else {
+            echo "Failed to update status.";
         }
     }
 
